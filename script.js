@@ -9,146 +9,9 @@
 // =========================
 // CONFIG
 // =========================
-const WHATSAPP_NUMBER = "50587654321"; // (placeholder) sin +
+const WHATSAPP_NUMBER = "50575342838"; // (placeholder) sin +
 
-// =========================
-// DATA (edita fácil)
-// =========================
-const menuData = [
-  // Almuerzos
-  {
-    id: 1,
-    nombre: "Gallo Pinto",
-    categoria: "Almuerzos",
-    descripcion: "Arroz y frijoles refritos con su toque nica. Incluye ensalada.",
-    precio: 4.5,
-    //badge: "Popular",
-    image: "https://pub-abbf7ac480e44031bc258c3d83e958e5.r2.dev/gallopinto.png",
-  },
-  {
-    id: 2,
-    nombre: "Carne Asada",
-    categoria: "Almuerzos",
-    descripcion: "Carne de res a la parrilla con arroz, frijoles y tajadas.",
-    precio: 7.5,
-    badge: "",
-    image: "https://pub-abbf7ac480e44031bc258c3d83e958e5.r2.dev/carneasada.png",
-  },
-  {
-    id: 3,
-    nombre: "Pollo Asado",
-    categoria: "Almuerzos",
-    descripcion: "Pollo jugoso con arroz, frijoles y ensalada fresca.",
-    precio: 6.5,
-    //badge: "Nuevo",
-  },
-  {
-    id: 4,
-    nombre: "Almuerzo Típico",
-    categoria: "Almuerzos",
-    descripcion: "Comida completa con proteína, arroz, frijoles, plátano y ensalada.",
-    precio: 6.0,
-    badge: "",
-  },
 
-  // Típicos
-  {
-    id: 5,
-    nombre: "Vigorón",
-    categoria: "Típicos",
-    descripcion: "Yuca con chicharrón y encurtido. Bien servido.",
-    precio: 5.0,
-    badge: "Popular",
-  },
-  {
-    id: 6,
-    nombre: "Tajadas con Queso",
-    categoria: "Típicos",
-    descripcion: "Plátano frito con queso y ensalada.",
-    precio: 3.25,
-    badge: "",
-  },
-  {
-    id: 7,
-    nombre: "Quesillo",
-    categoria: "Típicos",
-    descripcion: "Queso suave con cebolla y crema (estilo tradicional).",
-    precio: 3.0,
-    badge: "",
-  },
-  {
-    id: 8,
-    nombre: "Enchilada Nica",
-    categoria: "Típicos",
-    descripcion: "Tortilla rellena con carne y ensalada, con salsita.",
-    precio: 5.5,
-    badge: "Nuevo",
-  },
-
-  // Bebidas
-  {
-    id: 9,
-    nombre: "Cacao Caliente",
-    categoria: "Bebidas",
-    descripcion: "Cacao tradicional preparado con leche. Bien cremoso.",
-    precio: 2.0,
-    badge: "Popular",
-    image: "https://pub-abbf7ac480e44031bc258c3d83e958e5.r2.dev/cacao.png",
-  },
-  {
-    id: 10,
-    nombre: "Batido",
-    categoria: "Bebidas",
-    descripcion: "Batido natural (consulta sabores disponibles).",
-    precio: 2.25,
-    badge: "",
-    image: "https://pub-abbf7ac480e44031bc258c3d83e958e5.r2.dev/batido.png",
-  },
-  {
-    id: 11,
-    nombre: "Café",
-    categoria: "Bebidas",
-    descripcion: "Café caliente (negro o con leche).",
-    precio: 1.25,
-    badge: "",
-    image: "https://pub-abbf7ac480e44031bc258c3d83e958e5.r2.dev/cafe.png",
-  },
-  {
-    id: 12,
-    nombre: "Refresco Natural",
-    categoria: "Bebidas",
-    descripcion: "Refresco casero de frutas (según temporada).",
-    precio: 1.5,
-    badge: "",
-  },
-
-  // Extras
-  {
-    id: 13,
-    nombre: "Arroz extra",
-    categoria: "Extras",
-    descripcion: "Porción adicional de arroz.",
-    precio: 1.0,
-    badge: "",
-  },
-  {
-    id: 14,
-    nombre: "Ensalada extra",
-    categoria: "Extras",
-    descripcion: "Ensalada fresca (pepino, tomate y repollo).",
-    precio: 1.25,
-    badge: "",
-  },
-  {
-    id: 15,
-    nombre: "Gaseosa",
-    categoria: "Extras",
-    descripcion: "Gaseosa fría (consulta disponibles).",
-    precio: 1.5,
-    badge: "",
-    image: "https://pub-abbf7ac480e44031bc258c3d83e958e5.r2.dev/gaseosa.png",
-  },
-];
 
 const galeriaImages = [
   { url: "https://pub-abbf7ac480e44031bc258c3d83e958e5.r2.dev/gallopinto.png", alt: "Gallo Pinto" },
@@ -282,22 +145,68 @@ function initCarousel() {
 // =========================
 // MENU RENDER
 // =========================
+// function renderFeatured() {
+//   const wrap = document.getElementById("featuredDishes");
+//   if (!wrap) return;
+
+//   const picks = [
+//     menuData.find((x) => x.nombre === "Gallo Pinto"),
+//     menuData.find((x) => x.nombre === "Carne Asada"),
+//     menuData.find((x) => x.nombre === "Cacao Caliente"),
+//   ].filter(Boolean);
+
+//   wrap.innerHTML = picks
+//     .map((item) => {
+//       const badge = item.badge ? `<span class="badge ${item.badge === "Nuevo" ? "badge--new" : "badge--popular"}">${escapeHtml(item.badge)}</span>` : "";
+
+//       const img = item.image
+//         ? `<img src="${item.image}" alt="${escapeHtml(item.nombre)}" loading="lazy" />`
+//         : `<div class="ph"><span class="material-icons" aria-hidden="true">restaurant</span></div>`;
+
+//       return `
+//         <article class="product">
+//           <div class="product__media">
+//             ${badge}
+//             ${img}
+//           </div>
+//           <div class="product__body">
+//             <div class="product__top">
+//               <h3>${escapeHtml(item.nombre)}</h3>
+//               <span class="price">${money(item.precio)}</span>
+//             </div>
+//             <p class="product__desc">${escapeHtml(item.descripcion)}</p>
+//             <button class="btn btn--primary btn--sm" data-whatsapp data-name="${escapeHtml(item.nombre)}" data-price="${money(item.precio)}">
+//               <span class="material-icons" aria-hidden="true">shopping_bag</span>
+//               Pedir
+//             </button>
+//           </div>
+//         </article>
+//       `;
+//     })
+//     .join("");
+// }
+
 function renderFeatured() {
   const wrap = document.getElementById("featuredDishes");
   if (!wrap) return;
 
-  const picks = [
-    menuData.find((x) => x.nombre === "Gallo Pinto"),
-    menuData.find((x) => x.nombre === "Carne Asada"),
-    menuData.find((x) => x.nombre === "Cacao Caliente"),
-  ].filter(Boolean);
+  // const picks = [
+  //   menuData.find((x) => x.nombre === "Gallo Pinto"),
+  //   menuData.find((x) => x.nombre === "Carne Asada"),
+  //   menuData.find((x) => x.nombre === "Cacao Caliente"),
+  // ].filter(Boolean);
+
+  const picks = menuData;
 
   wrap.innerHTML = picks
     .map((item) => {
-      const badge = item.badge ? `<span class="badge ${item.badge === "Nuevo" ? "badge--new" : "badge--popular"}">${escapeHtml(item.badge)}</span>` : "";
+      const badge = item.badge
+        ? `<span class="badge ${item.badge === "Nuevo" ? "badge--new" : "badge--popular"}">${escapeHtml(item.badge)}</span>`
+        : "";
 
-      const img = item.image
-        ? `<img src="${item.image}" alt="${escapeHtml(item.nombre)}" loading="lazy" />`
+      // ✅ backend: imagenUrl
+      const img = item.imagenUrl
+        ? `<img src="${item.imagenUrl}" alt="${escapeHtml(item.nombre)}" loading="lazy" />`
         : `<div class="ph"><span class="material-icons" aria-hidden="true">restaurant</span></div>`;
 
       return `
@@ -309,10 +218,13 @@ function renderFeatured() {
           <div class="product__body">
             <div class="product__top">
               <h3>${escapeHtml(item.nombre)}</h3>
-              <span class="price">${money(item.precio)}</span>
+              <span class="price">${money(Number(item.precio) || 0)}</span>
             </div>
-            <p class="product__desc">${escapeHtml(item.descripcion)}</p>
-            <button class="btn btn--primary btn--sm" data-whatsapp data-name="${escapeHtml(item.nombre)}" data-price="${money(item.precio)}">
+            <p class="product__desc">${escapeHtml(item.descripcion || "")}</p>
+            <button class="btn btn--primary btn--sm"
+                    data-whatsapp
+                    data-name="${escapeHtml(item.nombre)}"
+                    data-price="${money(Number(item.precio) || 0)}">
               <span class="material-icons" aria-hidden="true">shopping_bag</span>
               Pedir
             </button>
@@ -322,6 +234,8 @@ function renderFeatured() {
     })
     .join("");
 }
+
+
 
 function renderMenu(category) {
   const grid = document.getElementById("menuItems");
@@ -340,7 +254,7 @@ function renderMenu(category) {
             ${badge}
           </header>
 
-          <p class="menuItem__desc">${escapeHtml(item.descripcion)}</p>
+          <p class="menuItem__desc">Se que tienes antojo</p>
 
           <footer class="menuItem__foot">
             <span class="price">${money(item.precio)}</span>
@@ -548,7 +462,26 @@ function initForm() {
 // =========================
 // INIT
 // =========================
-document.addEventListener("DOMContentLoaded", () => {
+// document.addEventListener("DOMContentLoaded", () => {
+//   // Año en footer
+//   const year = document.getElementById("year");
+//   if (year) year.textContent = String(new Date().getFullYear());
+
+//   initNav();
+//   initSmoothScroll();
+//   initCarousel();
+
+//   renderFeatured();
+//   initTabs();
+//   renderGallery();
+
+//   initWhatsAppButtons();
+//   initForm();
+// });
+
+
+
+document.addEventListener("DOMContentLoaded", async () => {
   // Año en footer
   const year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
@@ -556,11 +489,27 @@ document.addEventListener("DOMContentLoaded", () => {
   initNav();
   initSmoothScroll();
   initCarousel();
-
-  renderFeatured();
-  initTabs();
   renderGallery();
-
   initWhatsAppButtons();
   initForm();
+
+  try {
+      const res = await fetch("https://datafood-backend.onrender.com/menu");
+      const data = await res.json();
+
+      // ✅ convertir a array
+      menuData = [
+        ...(data.platos || []),
+        ...(data.bebidas || []),
+      ];
+
+      console.log("Menu normalizado:", menuData);
+    } catch (e) {
+      console.error("Error cargando menú:", e);
+      menuData = [];
+    }
+
+  // ✅ Renderizar DESPUÉS de cargar
+  renderFeatured();
+  initTabs(); // esto llama renderMenu("Almuerzos") dentro
 });
